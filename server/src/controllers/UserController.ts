@@ -4,14 +4,13 @@ import { userRepository } from "../repositories/userRepository";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { UserPokemon } from "../entities/UserPokemon";
-
-import { Pokemon } from "../entities/Pokemon";
-import { getRepository } from "typeorm";
+import { AppDataSource } from "../data-source";
+import { User } from "../entities/User";
 
 const userPokemon = new UserPokemon();
 
 export class UserController {
-  async create(req: Request, res: Response) {
+  async register(req: Request, res: Response) {
     const { name, email, password } = req.body;
 
     const userExists = await userRepository.findOneBy({ email });
@@ -62,32 +61,40 @@ export class UserController {
     });
   }
 
-  async getProfile(req: Request, res: Response) {
-    return res.json(req.user);
-  }
-
-  static async capturePokemon(req: Request, res: Response) {
-    const { email } = req.body;
-    console.log(email);
-    const userExists = await userRepository.findOneBy({ email });
+  async capturePokemon(req: Request, res: Response) {
+    const { userId, name, image, pokemonType, weight, height } = req.body;
+    const userRepository = AppDataSource.getRepository(User);
+    const userExists = await userRepository.findOneBy({ id: userId });
 
     if (!userExists) {
-      throw new BadRequestError("E-mail não existe!");
+      return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    return res.json(email);
+    const userPokemonRepository = AppDataSource.getRepository(UserPokemon);
+    const newPokemon = userPokemonRepository.create({
+      name,
+      image,
+      pokemonType,
+      weight,
+      height,
+      captureDate: new Date(), //
+      user: userExists,
+    });
 
-    //   const newUser = userRepository.create({
-    //     name,
-    //     email,
-    //     password: hashPassword,
-    //   });
+    await userPokemonRepository.save(newPokemon);
 
-    //   await userRepository.save(newUser);
+    const { user, ...pokemonWithoutUser } = newPokemon;
+    return res.status(201).json(pokemonWithoutUser);
+  }
 
-    //   const { password: _, ...user } = newUser;
-
-    //   return res.status(201).json(user);
-    // }
+  async listAllPokemons(req: Request, res: Response) {
+    try {
+      const userPokemonRepository = AppDataSource.getRepository(UserPokemon);
+      const allPokemons = await userPokemonRepository.find();
+      return res.json(allPokemons);
+    } catch (error) {
+      console.error("Erro ao listar Pokémons:", error);
+      return res.status(500).json({ message: "Erro interno do servidor" });
+    }
   }
 }

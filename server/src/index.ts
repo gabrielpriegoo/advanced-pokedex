@@ -9,11 +9,7 @@ const cors = require("cors");
 AppDataSource.initialize().then(() => {
   const app = express();
 
-  app.use(
-    cors({
-      origin: "http://localhost:3000",
-    })
-  );
+  app.use(cors({ routes, credentials: true }));
 
   app.use(express.json());
 

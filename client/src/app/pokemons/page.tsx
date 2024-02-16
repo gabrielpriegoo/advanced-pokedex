@@ -20,7 +20,7 @@ export default function Dashboard() {
             <SideNavbar />
           </div>
         </div>
-        <div className="border w-screen bg-[#FAFBFF]">
+        <div className="border-2 w-screen bg-[#FAFBFF]">
           <Pokemons />
         </div>
       </div>
