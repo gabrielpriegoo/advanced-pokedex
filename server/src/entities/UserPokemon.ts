@@ -1,19 +1,29 @@
-// src/entity/UserPokemon.ts
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { User } from "./User";
-import { Pokemon } from "./Pokemon";
 
 @Entity()
 export class UserPokemon {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User, (user) => user.userPokemons)
-  user: User;
+  @Column()
+  name: string;
 
-  @ManyToOne(() => Pokemon, (pokemon) => pokemon.userPokemons)
-  pokemon: Pokemon;
+  @Column()
+  image: string;
+
+  @Column()
+  pokemonType: string;
+
+  @Column({ type: "float" })
+  weight: number;
+
+  @Column({ type: "float" })
+  height: number;
 
   @Column()
   captureDate: Date;
+
+  @ManyToOne(() => User, (user) => user.userPokemons)
+  user: User;
 }

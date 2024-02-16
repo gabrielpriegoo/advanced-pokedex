@@ -19,7 +19,7 @@ export default function Dashboard() {
             <SideNavbar />
           </div>
         </div>
-        <div className="border w-screen">
+        <div className="border-2 w-screen">
           <Inventary />
         </div>
       </div>

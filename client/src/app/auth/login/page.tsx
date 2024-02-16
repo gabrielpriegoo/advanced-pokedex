@@ -33,19 +33,20 @@ export default function Login() {
         const { token } = await response.json();
 
         localStorage.setItem("authToken", token);
-        router.push("/dashboard");
+
+        router.push("/pokemons");
       } else {
         alert("Login falhou!");
       }
     } catch (error) {
-      console.error("Erro ao fazer login", error);
+      alert("Erro ao fazer login!");
     }
   };
 
   return (
     <main className="flex min-h-screen flex-row items-center bg-slate-100">
       {/* Left Side */}
-      <div className="flex flex-col justify-center items-center min-h-screen w-[1000px] bg-gradient-to-bl from-[#C0F2E9] via-[#F6C093] to-[#C4D5FA]">
+      <div className="flex flex-col justify-center items-center min-h-screen w-[1000px] bg-gradient-to-bl from-[#C0F2E9] via-[#F6C093] to-[#C4D5FA] border-slate-300 border-r-2">
         <div className="pl-10">
           <Image src={ImgPokemon} width={400} alt="Logo Pokemon Tela Auth" />
         </div>
@@ -54,9 +55,9 @@ export default function Login() {
         </div>
       </div>
       {/* Right Side */}
-      <div className="ml-28 flex flex-col justify-start items-center w-[670px] min-h-screen">
+      <div className="ml-28 flex  flex-col justify-start items-center w-[670px] min-h-screen">
         <div className="w-full flex justify-end h-60 mt-5">
-          <Button variant="link" onClick={() => router.push("/register")}>
+          <Button variant="link" onClick={() => router.push("/auth/register")}>
             Register
           </Button>
         </div>

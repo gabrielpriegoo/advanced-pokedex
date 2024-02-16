@@ -44,17 +44,17 @@ export default function Register() {
         console.log("Usuário registrado com sucesso");
         router.push("/auth/login");
       } else {
-        console.log("Erro ao registrar usuário");
+        alert("Erro ao registrar usuário");
       }
     } catch (error) {
-      console.error("Erro ao enviar formulário", error);
+      alert("Erro ao enviar formulário");
     }
   };
 
   return (
     <main className="flex min-h-screen flex-row items-center bg-slate-100">
       {/* Left Side */}
-      <div className="flex flex-col justify-center items-center min-h-screen w-[1000px] bg-gradient-to-bl from-[#C0F2E9] via-[#F6C093] to-[#C4D5FA]">
+      <div className="flex flex-col justify-center items-center min-h-screen w-[1000px] bg-gradient-to-bl from-[#C0F2E9] via-[#F6C093] to-[#C4D5FA] border-slate-300 border-r-2">
         <div className="pl-10">
           <Image src={ImgPokemon} width={400} alt="Logo Pokemon Tela Auth" />
         </div>
@@ -65,7 +65,7 @@ export default function Register() {
       {/* Right Side */}
       <div className="ml-28 flex flex-col justify-start items-center w-[670px] min-h-screen">
         <div className="w-full flex justify-end h-60 mt-5">
-          <Button variant="link" onClick={() => router.push("/login")}>
+          <Button variant="link" onClick={() => router.push("/auth/login")}>
             Login
           </Button>
         </div>

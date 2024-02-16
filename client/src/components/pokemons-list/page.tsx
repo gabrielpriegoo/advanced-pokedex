@@ -82,7 +82,7 @@ const PokemonList: React.FC = () => {
               />
               <div className="w-[200px] bg-slate-200 h-[1px] mt-2"></div>
               <div className="text-center mt-3">
-                <h3 className="text-sm font-bold">{pokemon.name}</h3>
+                <h1 className="text-sm font-bold">{pokemon.name}</h1>
                 <p className="text-sm">Types: {pokemon.types.join(", ")}</p>
                 <p className="text-sm">Weight: {pokemon.weight}</p>
                 <p className="text-sm">Height: {pokemon.height}</p>
