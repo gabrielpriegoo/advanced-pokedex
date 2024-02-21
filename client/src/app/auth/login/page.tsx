@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import ImgPokemon from "../../../../public/img-pokemon-pokedex.svg";
+import Logo from "../../../../public/logo.png";
 import ImgAsh from "../../../../public/img-ash.png";
 import Image from "next/image";
 
@@ -43,46 +43,42 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen flex-row items-center bg-slate-100">
+    <main className="flex min-h-screen flex-row items-center bg-[#131216]">
       {/* Left Side */}
-      <div className="flex flex-col justify-center items-center bg-background-login bg-cover bg-no-repeat bg-center min-h-screen w-[1000px] rounded-e-full border-slate-300 border-r-2" />
-
+      <div className="min-h-screen w-[1000px] flex justify-center items-end">
+        <div className="bg-background-login bg-cover bg-no-repeat bg-center w-[800px] h-[800px] " />
+      </div>
       {/* Right Side */}
-      <div className="ml-28 flex  flex-col justify-start items-center w-[670px] min-h-screen p-8">
-        <div className="w-full flex justify-end h-[140px] mt-7">
-          <Button
-            variant="default"
-            onClick={() => router.push("/auth/register")}
-            className="shadow-xl"
-          >
-            Registrar
-          </Button>
-        </div>
-        <div className="border-2 w-[500px] h-[600px] flex justify-center items-center rounded-3xl">
-          <div className=" w-[400px] h-[430px] flex-col justify-center items-center">
-            <div className="p-5 flex justify-center">
+      <div className="flex justify-start items-center w-[670px] min-h-screen p-8">
+        <div className="w-[550px] h-[650px] flex justify-center items-center rounded-lg shadow-lg bg-[#212026]">
+          <div className=" w-[400px] flex-col justify-center items-center">
+            <div className="pb-5 flex justify-center mb-2">
               <Image
-                src={ImgPokemon}
-                width={200}
+                className="rounded-full shadow-xl hover:scale-110 transition duration-300 ease-in-out transform"
+                src={Logo}
+                width={150}
                 alt="Logo Pokemon Tela Auth border"
               />
             </div>
             <div className="text-center">
-              <h1 className="font-extrabold text-[24px]">
-                Entre com sua conta cadastrada
+              <h1 className="font-extrabold text-[24px] text-white">
+                Entre com sua conta Pokédex
               </h1>
-              <p className="font-normal text-[12px] text-[#64748B]">
+              <p className="font-normal text-[12px] text-[#a3a3a3]">
                 Faça login para continuar
               </p>
             </div>
             <div className="mt-4">
               <form onSubmit={handleLogin}>
                 <div className="mt-3">
-                  <Label htmlFor="email" className="text-[14px] font-semibold">
+                  <Label
+                    htmlFor="email"
+                    className="text-[14px] font-medium text-white "
+                  >
                     Email
                   </Label>
                   <Input
-                    className="rounded-[6px] border-[#E2E8F0] mt-2  px-4 w-full focus:font-semibold  focus:text-[14px]"
+                    className="mt-2 border-none px-4 w-full text-white  shadow-md bg-[#131216] h-12"
                     placeholder="exemplo@exemplo.com"
                     type="email"
                     name="email"
@@ -93,12 +89,12 @@ export default function Login() {
                 <div className="mt-3">
                   <Label
                     htmlFor="password"
-                    className="text-[14px] font-semibold"
+                    className="text-[14px] font-semibold text-white"
                   >
                     Password
                   </Label>
                   <Input
-                    className="rounded-[6px] border-[#E2E8F0] mt-2 font-medium text-[14px] px-4 w-full"
+                    className=" border-none mt-2 font-medium text-white text-[14px] px-4 w-full shadow-md bg-[#131216] h-12"
                     type="password"
                     name="password"
                     value={password}
@@ -109,11 +105,25 @@ export default function Login() {
                 <Button
                   variant="default"
                   type="submit"
-                  className="rounded-[6px] text-white w-full mt-6 shadow-xl"
+                  className="text-white w-full mt-6 shadow-xl h-12 bg-blue-700 hover:bg-blue-900"
                 >
                   Entrar
                 </Button>
               </form>
+              <div>
+                <div className="w-full flex justify-center items-center mt-7">
+                  <span className="text-white">
+                    Não possui uma conta crie em
+                  </span>
+                  <Button
+                    className="w-16 h-0 ml-2 text-white font-semibold hover:text-blue-500"
+                    variant="link"
+                    onClick={() => router.push("/auth/register")}
+                  >
+                    Registrar
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
