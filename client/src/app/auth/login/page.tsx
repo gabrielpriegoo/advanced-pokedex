@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import Logo from "../../../../public/logo.png";
-import ImgAsh from "../../../../public/img-ash.png";
 import Image from "next/image";
 
 export default function Login() {
@@ -50,13 +49,15 @@ export default function Login() {
       </div>
       {/* Right Side */}
       <div className="flex justify-start items-center w-[670px] min-h-screen p-8">
-        <div className="w-[550px] h-[650px] flex justify-center items-center rounded-lg shadow-lg bg-[#212026]">
-          <div className=" w-[400px] flex-col justify-center items-center">
-            <div className="pb-5 flex justify-center mb-2">
+        <div className="w-[550px] h-[600px] flex justify-center items-center rounded-lg shadow-lg bg-[#212026]">
+          <div className="w-[400px] flex-col justify-center items-center">
+            <div className="pb-5 flex justify-center mb-1">
               <Image
-                className="rounded-full shadow-xl hover:scale-110 transition duration-300 ease-in-out transform"
+                className={
+                  "animate-bounce rounded-full shadow-xl ease-in-out transform"
+                }
                 src={Logo}
-                width={150}
+                width={100}
                 alt="Logo Pokemon Tela Auth border"
               />
             </div>
@@ -94,7 +95,7 @@ export default function Login() {
                     Password
                   </Label>
                   <Input
-                    className=" border-none mt-2 font-medium text-white text-[14px] px-4 w-full shadow-md bg-[#131216] h-12"
+                    className="border-none mt-2 font-medium text-white text-[14px] px-4 w-full shadow-md bg-[#131216] h-12"
                     type="password"
                     name="password"
                     value={password}
