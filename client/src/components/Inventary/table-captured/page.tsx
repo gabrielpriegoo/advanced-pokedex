@@ -62,7 +62,7 @@ export default function TableCaptured() {
           ))
         ) : (
           <div className="w-[1300px] h-[500px]">
-            <h1 className="font-bold text-center h-[500px] mt-[200px]">
+            <h1 className="text-white font-bold text-center h-[500px] mt-[200px]">
               Nenhum Pokémon capturado ainda.
             </h1>
           </div>

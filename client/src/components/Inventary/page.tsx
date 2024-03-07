@@ -50,18 +50,18 @@ const capturePokemon = async () => {
 export default function Inventory() {
   return (
     <>
-      <div className="bg-[#FAFBFF] px-4 pt-1 min-h-screen">
-        <div className="mt-2">
+      <div className="bg-[#242529] px-4 pt-1 min-h-screen">
+        <div className="mt-10">
           <div className="flex justify-end max-w-[1350px] ml-[70px]">
             <Button
               onClick={() => capturePokemon()}
-              className="bg-black text-white rounded-xl hover:bg-slate-800 gap-2"
+              className="border-[2px] border-[#37373F] bg-[#242529] text-white rounded-xl hover:bg-[#37373F] gap-2"
             >
               <MdCatchingPokemon className="text-white w-5 h-5" />
               Caçar Pokémon
             </Button>
           </div>
-          <div className="bg-gray-300 h-[1px] w-full max-w-[1350px] ml-[70px] mt-5 flex"></div>
+          <div className="bg-[#37373F] h-[2px] w-full max-w-[1350px] ml-[70px] mt-5 flex"></div>
           <div>
             <TableCaptured />
           </div>

@@ -30,8 +30,8 @@ export function Nav({ links, isCollapsed }: NavProps) {
             href={link.href}
             className={`inline-flex border-b-2 items-center gap-2 p-2 rounded-[5px] transition-colors duration-200 font-semibold ${
               link.variant === "default"
-                ? "bg-[#F4F4F5] hover:bg-[#F4F4F5] text-black"
-                : "text-black hover:bg-[#F4F4F5]"
+                ? " text-white"
+                : "text-white hover:bg-[#F4F4F5]"
             } ${isCollapsed ? "justify-center w-9 h-9" : "w-auto"}`}
           >
             <link.icon className="h-4 w-4" />
